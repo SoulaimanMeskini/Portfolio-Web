@@ -10,7 +10,6 @@ export const App = () => {
 
   return (
     <>
-      <div class="WhiteText">Made by Ming Li Janssen</div>
       <ImgCircle src={media} onClick={toggleClasses}>
       </ImgCircle>
       <div class="Black Top"></div>
