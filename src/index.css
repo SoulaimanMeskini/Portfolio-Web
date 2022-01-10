@@ -27,6 +27,18 @@ body {
 
 /* Animtion Circle Fullscreen */
 
+.LensWrapShadow {}
+
+.LensWrap {
+    background-color: pink;
+    height: 100vh;
+    width: 100vW;
+    clip-path: circle(19% at 50% 50%);
+    transition: clip-path 1s;
+    cursor: pointer;
+    filter: drop-shadow(0 0.2rem 0.25rem rgba(12, 223, 135, 0.6));
+}
+
 .Lens {
     height: 100vh;
     width: 100vW;

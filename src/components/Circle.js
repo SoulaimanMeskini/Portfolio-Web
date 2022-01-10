@@ -6,7 +6,9 @@ export const CircleComponent = () => {
         targetImg.classList.add("transitionGif");
     }
 
-    return ( 
-        <img src={mediaVideo} class="Lens" onClick={(e) => toggleClasses(e.target)}/>
+    return (
+        <>
+            <img src={mediaVideo} class="Lens LensWrapper" onClick={(e) => toggleClasses(e.target)}/>
+        </>
     )
 }
