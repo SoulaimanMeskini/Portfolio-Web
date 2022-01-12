@@ -1,14 +1,21 @@
 import React from 'react';
-import mediaVideo from '../assets/gif/test.gif';
+import styled from 'styled-components';
 
 export const CircleComponent = () => {
-    function toggleClasses(targetImg) {
-        targetImg.classList.add("transitionGif");
+    async function toggleClasses(targetButton) {
+        targetButton.outerHTML = "";
+        document.getElementById("circle").setAttribute("class", "OpenupCircle");
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        document.getElementById("circle").setAttribute("class", "OpenCircle");
     }
 
     return (
-        <>
-            <img src={mediaVideo} class="Lens LensWrapper" onClick={(e) => toggleClasses(e.target)}/>
-        </>
+        <section>
+            <button class="hiddenButton" onClick={(e) => toggleClasses(e.target)}></button>
+            <div class="box"></div>
+            <div class="box "></div>
+            <div id="circle" class="circle"></div>
+        </section>
+        
     )
 }

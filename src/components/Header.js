@@ -23,22 +23,14 @@ export const HeaderComponent = () => {
 
     return (
     <div class="header">
-        {/* 
-        onClick={(e) => transitionMenu(e.target)}
-        
-        gives the same result as 
-        
-        document.getElementsByTagName("img")[0]
-        
-        the difference is, the first one is only working on the target of the event and the other is binded to the tagname and will do the same on every img tag
-        */}
-        
+        <div onclick="location.href='#'" class="logo"></div>
         <button class="liquidButton" onClick={(e) => transitionMenu(e.target)}></button>
         <ul id="Menu" class="hidden">
             <li><a href="#">PROJECTS</a></li>
             <li><a href="#">LOOK BOOK</a></li>
             <li><a href="#">ABOUT</a></li>
         </ul>
+        <dic class="hiddenItem"></dic>
     </div>
     )
 }
