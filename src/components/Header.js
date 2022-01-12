@@ -1,36 +1,115 @@
-import { Button } from './Button'
-import React from 'react';
-
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
 export const HeaderComponent = () => {
+	const [MenuOpen, SetMenuOpen] = useState(false);
+	
 
-    async function transitionMenu(targetButton){
-        targetButton.classList.add("transitionMenu");
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-    
-        const newDiv = document.createElement("ul")
-        const newContent = document.createTextNode("test");
-    
-        newDiv.appendChild(newContent);
-        targetButton.parentElement.appendChild(newDiv);
-        
-    
-        document.getElementById("Menu").setAttribute("class", "visible");
-        targetButton.classList.add("fadeOutMenu");
-        targetButton.outerHTML = "";
+	return (
+		<Header>
+			<Logo onclick="location.href='#'" />
+            <Fill />
+            <HeaderBubble open={MenuOpen} onClick={(e) => SetMenuOpen(!MenuOpen)}>
+                {MenuOpen === true && <>
+                    <p>PROJECTS</p>
+                    <p>LOOK BOOK</p>
+                    <p>ABOUT</p>
+                </>}
+            </HeaderBubble>
+            <Fill />
+			<HiddenItem />
+		</Header>
+	);
+};
+
+const Header = styled.div`
+    position: absolute;
+    top: 0;
+	height: 60px;
+	width: 100vw;
+	display: flex;
+	background-color: transparent;
+	z-index: 23;
+	margin-bottom: -40px;
+    margin-top: 20px;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-content: space-between;
+    align-items: center;
+`;
+
+const Fill = styled.div`
+    display: flex;
+    flex-grow: 1;
+`;
+
+const HeaderBubble = styled.div`
+    height: 50px;
+    border-radius: 50px;
+    width: ${({ open }) => open ? 300:50}px;
+    padding: ${({ open })=> open ? '0px 20px' : '0px'};
+    cursor: ${({ open }) => open ? 'default' : 'cursor'};
+    background-color: #EEEEEE;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &:hover {
+        background-color: ${({ open }) => open ? '#EEEEEE' : 'rgb(196, 196, 196)'};
+	}
+
+    p {
+        cursor: pointer;
+        color: black;
+        text-decoration: none;
+        border-radius: 5px;
+        white-space: nowrap;
+        animation: menu-fade .8s;
+        &:hover {
+            color: #6F02C6;
+        }
+
     }
+    
+    transition: width .2s ease-in-out;
 
-    return (
-    <div class="header">
-        <div onclick="location.href='#'" class="logo"></div>
-        <button class="liquidButton" onClick={(e) => transitionMenu(e.target)}></button>
-        <ul id="Menu" class="hidden">
-            <li><a href="#">PROJECTS</a></li>
-            <li><a href="#">LOOK BOOK</a></li>
-            <li><a href="#">ABOUT</a></li>
-        </ul>
-        <dic class="hiddenItem"></dic>
-    </div>
-    )
-}
+    @keyframes menu-fade {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+   
+`;
+
+const Logo = styled.div`
+	background-image: url(../src/assets/pictures/sm_logo_white.png);
+	background-position: center;
+	background-size: cover;
+	transition: 0.6s;
+	width: 150px;
+	height: 200px;
+	margin: 10px;
+
+	&:hover {
+		background-position: center;
+		background-size: cover;
+		position: relative;
+		transition: 0.4s;
+		width: 150px;
+		height: 100%;
+		z-index: 23;
+		margin: 10px;
+	}
+`;
+
+const HiddenItem = styled.div`
+	width: 150px;
+	height: 60px;
+	display: block;
+	margin: 10px;
+`;

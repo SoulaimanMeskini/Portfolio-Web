@@ -10,7 +10,8 @@ export const App = () => {
       <IntroComponent/>
       <HeaderComponent/>
       <CircleComponent/>
-      <Textanimation/><div class="animatie">
+      <Textanimation/>
+      <div class="animatie">
             <p class="text-uppercase"><span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
         </div>
     </>
