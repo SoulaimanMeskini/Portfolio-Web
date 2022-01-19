@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import LogoWhite from '../assets/pictures/sm_logo_white.png'
-import LogoP from '../assets/pictures/sm_logo_purple.png'
+import LogoPurple from '../assets/pictures/sm_logo_purple.png'
 
 
 export const HeaderComponent = () => {
@@ -13,7 +13,7 @@ export const HeaderComponent = () => {
         <>
 		    <Header>
                 <LogoWrapper >
-                   <img src={LogoWhite}/> 
+                   <img id="LogoChanger" src={LogoWhite}/> 
                 </LogoWrapper>
                 <Fill />
                     <HeaderBubble id="MenuChanger" open={MenuOpen} onClick={(e) => SetMenuOpen(!MenuOpen)}>
@@ -103,7 +103,7 @@ const LogoWrapper = styled.div`
         transition: 0.6s;
         width: 150px;
         height: 100%;
-         margin: 10px;
+        margin: 10px;
         cursor: pointer;
     }
 `;

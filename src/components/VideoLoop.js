@@ -93,8 +93,8 @@ const VideoHolder = styled.div`
         position: fixed;
         right: 0;
         bottom: 0;
-        min-width: 100%;
-        min-height: 100%;
+        width: 100%    !important;
+        height: auto   !important;
     }
 `;
 

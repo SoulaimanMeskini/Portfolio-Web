@@ -8,6 +8,7 @@ import { VideoLoop } from './components/VideoLoop';
 export const App = () => {
   return (
     <>
+    {/* <Textanimation></Textanimation> */}
       <VideoLoop />
       <HeaderComponent />
       <CircleComponent />

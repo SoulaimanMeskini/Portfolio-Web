@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+
 export const CircleComponent = (p) => {
     const [CircleOpen, SetCircleOpen] = useState(false);
 
-    function fixer(){
+    function fixer() {
         SetCircleOpen(!CircleOpen);
         removeHiddenButtonTrue();
         baBAba();
@@ -15,9 +16,11 @@ export const CircleComponent = (p) => {
         hiddenButton.remove();
     }
 
-    function baBAba(){
+    function baBAba() {
         let menuChanger = document.getElementById("MenuChanger");
         menuChanger.setAttribute("style", newStyle);
+        let logoChanger = document.getElementById("LogoChanger");
+        logoChanger.setAttribute("src", newLogo);
     }
 
 
@@ -30,15 +33,15 @@ export const CircleComponent = (p) => {
         }
     `;
 
-    return ( 
-        <Section>
-            <HiddenButtonTrue id="HiddenButtenTrue" onClick={() => fixer()}>
-            </HiddenButtonTrue>
-            
-            <OpenupCircle open={!CircleOpen}>
-            </OpenupCircle>
-        </Section>
-        )
+    const newLogo = `../sm_logo_purple.png`;
+    
+
+    return (
+			<Section>
+				<HiddenButtonTrue id='HiddenButtenTrue' onClick={() => fixer()}></HiddenButtonTrue>
+				<OpenupCircle open={!CircleOpen}></OpenupCircle>{' '}
+			</Section>
+		);
 }
 const Section = styled.section `
     z-index: 21;
@@ -128,13 +131,13 @@ const OpenupCircle = styled.div `
     box-shadow: -1px -1px 27px 8px rgba(0, 0, 0, 0.81) inset;
     -webkit-box-shadow: -1px -1px 27px 8px rgba(0, 0, 0, 0.81) inset;
     -moz-box-shadow: -1px -1px 27px 8px rgba(0, 0, 0, 0.81) inset;
-    height: ${({ open }) => open ? '750px' : '200%'};
-    width: ${({ open }) => open ? '750px' : '200%'};
+    height: ${({ open }) => open ? '450px' : '200%'};
+    width: ${({ open }) => open ? '450px' : '200%'};
 
     transition: width .5s ease-in-out,height .5s ease-in-out;
     &:hover {
-        height: ${({ open }) => open ? '800px' : '200%'};
-        width: ${({ open }) => open ? '800px' : '200%'};
+        height: ${({ open }) => open ? '500px' : '200%'};
+        width: ${({ open }) => open ? '500px' : '200%'};
     }
 
   
