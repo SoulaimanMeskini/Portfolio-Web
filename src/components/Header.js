@@ -12,8 +12,8 @@ export const HeaderComponent = () => {
 	return (
         <>
 		    <Header>
-                <LogoWrapper onMouseEnter={()=> SetA(true)} onMouseLeave={()=> SetA(false)}>
-			        
+                <LogoWrapper >
+                   <img src={LogoWhite}/> 
                 </LogoWrapper>
                 <Fill />
                     <HeaderBubble id="MenuChanger" open={MenuOpen} onClick={(e) => SetMenuOpen(!MenuOpen)}>
@@ -96,26 +96,16 @@ const HeaderBubble = styled.div`
 `;
 
 const LogoWrapper = styled.div`
-        background-image: url(../assets/pictures/sm_logo_white.png);
-	    background-position: center;
-	    background-size: cover;
-	    transition: 0.6s;
-	    width: 150px;
-	    height: 100px;
- 	    margin: 10px;
+
+    img{
+        background-position: center;
+        background-size: cover;
+        transition: 0.6s;
+        width: 150px;
+        height: 100%;
+         margin: 10px;
         cursor: pointer;
-    &:hover {
-            z-index: 24;
-		    background-position: center;
-		    background-size: cover;
-		    position: relative;
-		    transition: 0.4s;
-		    width: 150px;
-		    height: 100%;
-		    z-index: 23;
-		    margin: 10px;
-        }
-    
+    }
 `;
 
 const HiddenItem = styled.div`
