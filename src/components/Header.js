@@ -1,24 +1,32 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import LogoWhite from '../assets/pictures/sm_logo_white.png'
+import LogoP from '../assets/pictures/sm_logo_purple.png'
+
+
 export const HeaderComponent = () => {
 	const [MenuOpen, SetMenuOpen] = useState(false);
-	
+    const [A, SetA] = useState(false);
 
 	return (
-		<Header>
-			<Logo onclick="location.href='#'" />
-            <Fill />
-            <HeaderBubble open={MenuOpen} onClick={(e) => SetMenuOpen(!MenuOpen)}>
-                {MenuOpen === true && <>
-                    <p>PROJECTS</p>
-                    <p>LOOK BOOK</p>
-                    <p>ABOUT</p>
-                </>}
-            </HeaderBubble>
-            <Fill />
-			<HiddenItem />
-		</Header>
+        <>
+		    <Header>
+                <LogoWrapper onMouseEnter={()=> SetA(true)} onMouseLeave={()=> SetA(false)}>
+			        
+                </LogoWrapper>
+                <Fill />
+                    <HeaderBubble id="MenuChanger" open={MenuOpen} onClick={(e) => SetMenuOpen(!MenuOpen)}>
+                        {MenuOpen === true && <>
+                            <p >PROJECTS</p>
+                            <p >LOOK BOOK</p>
+                            <p >ABOUT</p>
+                        </>}
+                    </HeaderBubble>
+                <Fill />
+			    <HiddenItem />
+		    </Header>
+        </>
 	);
 };
 
@@ -55,14 +63,15 @@ const HeaderBubble = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
+    color: #101010;
+    
+    
     &:hover {
-        background-color: ${({ open }) => open ? '#EEEEEE' : 'rgb(196, 196, 196)'};
+        ${({open}) => open ? '' : '&:hover {background-color: #C4C4C4;'}
 	}
 
     p {
         cursor: pointer;
-        color: black;
         text-decoration: none;
         border-radius: 5px;
         white-space: nowrap;
@@ -86,25 +95,27 @@ const HeaderBubble = styled.div`
    
 `;
 
-const Logo = styled.div`
-	background-image: url(../src/assets/pictures/sm_logo_white.png);
-	background-position: center;
-	background-size: cover;
-	transition: 0.6s;
-	width: 150px;
-	height: 200px;
-	margin: 10px;
-
-	&:hover {
-		background-position: center;
-		background-size: cover;
-		position: relative;
-		transition: 0.4s;
-		width: 150px;
-		height: 100%;
-		z-index: 23;
-		margin: 10px;
-	}
+const LogoWrapper = styled.div`
+        background-image: url(../assets/pictures/sm_logo_white.png);
+	    background-position: center;
+	    background-size: cover;
+	    transition: 0.6s;
+	    width: 150px;
+	    height: 100px;
+ 	    margin: 10px;
+        cursor: pointer;
+    &:hover {
+            z-index: 24;
+		    background-position: center;
+		    background-size: cover;
+		    position: relative;
+		    transition: 0.4s;
+		    width: 150px;
+		    height: 100%;
+		    z-index: 23;
+		    margin: 10px;
+        }
+    
 `;
 
 const HiddenItem = styled.div`

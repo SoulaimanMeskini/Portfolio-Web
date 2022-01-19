@@ -1,29 +1,47 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-export const CircleComponent = () => {
+export const CircleComponent = (p) => {
     const [CircleOpen, SetCircleOpen] = useState(false);
+
+    function fixer(){
+        SetCircleOpen(!CircleOpen);
+        removeHiddenButtonTrue();
+        baBAba();
+    }
+
+    function removeHiddenButtonTrue() {
+        let hiddenButton = document.getElementById("HiddenButtenTrue");
+        hiddenButton.remove();
+    }
+
+    function baBAba(){
+        let menuChanger = document.getElementById("MenuChanger");
+        menuChanger.setAttribute("style", newStyle);
+    }
+
+
+    const newStyle = `
+        background-color: #101010;
+        color: #EEEEEE;
     
-     async function toggleClasses(targetButton) {
-         targetButton.outerHTML = "";
-        document.getElementById("CircleLens").setAttribute("class", "OpenupCircle");
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        document.getElementById("CircleLens").setAttribute("class", "OpenCircle");
-     }
+        &:hover {
+            background-color: #161616;
+        }
+    `;
 
-    return (
+    return ( 
         <Section>
-            <p>{JSON.stringify(CircleOpen)}</p>
-            <OpenCircle />
-            <HiddenButton onClick={(e) => SetCircleOpen(true)}></HiddenButton> 
-            <Box></Box>
-            <Box></Box>
-            <OpenupCircle open={CircleOpen}></OpenupCircle>
-        </Section>   
-    )
+            <HiddenButtonTrue id="HiddenButtenTrue" onClick={() => fixer()}>
+            </HiddenButtonTrue>
+            
+            <OpenupCircle open={!CircleOpen}>
+            </OpenupCircle>
+        </Section>
+        )
 }
-
-const Section = styled.section`
+const Section = styled.section `
+    z-index: 21;
     position: absolute;
     top: 0;
     left: 0;
@@ -62,42 +80,33 @@ const Section = styled.section`
 
 `;
 
-const HiddenButton = styled.div`
+const HiddenButtonTrue = styled.div `
     position: absolute;
-    width: 510px;
-    height: 510px;
+    width: 800px;
+    height: 800px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 21;
     background-color: transparent;
     border: none;
+
 `;
 
-const CircleLens = styled.div`
+const HiddenButtonFalse = styled.div `
+    cursor: default!important;
+    display: none!important;
+`;
+
+const CircleLens = styled.div `
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 700px;
+    height: 700px;
     border: 5000px solid #101010;
     border-radius: 50%;
     box-shadow: -1px -1px 27px 8px rgba(0, 0, 0, 0.81) inset;
     -webkit-box-shadow: -1px -1px 27px 8px rgba(0, 0, 0, 0.81) inset;
     -moz-box-shadow: -1px -1px 27px 8px rgba(0, 0, 0, 0.81) inset;
-    animation: pulse 2s infinite;
-
-    @keyframes pulse {
-        0% {
-            width: 500px;
-            height: 500px;
-        }
-        50% {
-            width: 510px;
-            height: 510px;
-        }
-        100% {
-            width: 500px;
-            height: 500px;
-        }
-    }
+    
 
     @keyframes open-up {
         0% {
@@ -111,34 +120,26 @@ const CircleLens = styled.div`
     }
 `;
 
-const OpenupCircle = styled.div`
+const OpenupCircle = styled.div `
     position: absolute;
-    width: 500px;
-    height: 500px;
+    z-index: 17;
     border: 5000px solid #101010;
     border-radius: 50%;
     box-shadow: -1px -1px 27px 8px rgba(0, 0, 0, 0.81) inset;
     -webkit-box-shadow: -1px -1px 27px 8px rgba(0, 0, 0, 0.81) inset;
     -moz-box-shadow: -1px -1px 27px 8px rgba(0, 0, 0, 0.81) inset;
-    ${({ open }) => open ? 'animation: open-up 2s;' : ''}
+    height: ${({ open }) => open ? '750px' : '200%'};
+    width: ${({ open }) => open ? '750px' : '200%'};
 
-    @keyframes open-up {
-    0% {
-        width: 500px;
-        height: 500px;
+    transition: width .5s ease-in-out,height .5s ease-in-out;
+    &:hover {
+        height: ${({ open }) => open ? '800px' : '200%'};
+        width: ${({ open }) => open ? '800px' : '200%'};
     }
-    100% {
-        width: 150vw;
-        height: 150vh;
-    }}
-   
+
+  
 `;
 
-const OpenCircle = styled.div`
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-`;
 
-const Box = styled.div`
+const Box = styled.div `
 `;
